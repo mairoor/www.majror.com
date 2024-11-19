@@ -117,7 +117,7 @@ body {
 
 img {
     border-radius: 30px;
-    width: 400px;
+    width: 600px;
     height: 243px;
     border: 2px blue solid;
     margin: 15px 30px 15px 0;
@@ -127,7 +127,7 @@ img {
 video {
     border: 2px blue solid;
     border-radius: 17px;
-    margin-right: 85px;
+    margin-right: 35px;
     width: auto;
     height: 346px
 }
