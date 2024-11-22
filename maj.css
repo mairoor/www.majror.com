@@ -5,20 +5,18 @@
     direction: rtl;
 }
 
-
-
 .navbar {
     height: 70px;
     width: 100%;
+
     align-items: center;
     background-color: #3f88c2;
     color: white;
     padding: 10px;
     z-index: 100;
+    position: sticky;
     top: -1px;
-    position: fixed;
     box-shadow: 0 0 6px 1px #0020454d inset;
-
 }
 
 .navbar ul {
@@ -27,34 +25,24 @@
     justify-content: start;
 }
 
-
-
 .navbar ul li {
     margin: 10px 15px;
 }
 
 .navbar ul li a {
+
     color: white;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
     padding: 10px 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-
-
-}
-
-/* .navbar ul .dropdown {
-    list-style-type: none;
-    display: flex;
-    justify-content: start;
 }
 
 .navbar ul li a:hover {
     background-color: #7badd6;
     padding: 7px;
-
-} */
+}
 
 /* Container for the main content */
 .main-container {
@@ -62,8 +50,8 @@
     flex-wrap: wrap;
     padding: 10px 20px;
     margin-top: 60px;
+    /* Adjusted for fixed navbar */
     position: relative;
-
 }
 
 .main-box {
@@ -72,20 +60,17 @@
     font-family: cursive;
     font-size: 22px;
     text-align: justify;
-    /* line-height: 30px;
-    font-size: larger; */
     flex: 1;
     padding: 20px;
     background-color: #efe6e60f;
     min-width: 300px;
-
+    /* Reduced min-width for mobile */
 }
 
 .main-box ol li {
     list-style-position: inside;
     padding-right: 10px;
     color: blue;
-
 }
 
 .main-box ol {
@@ -94,25 +79,28 @@
 }
 
 .main-box h2 {
-    font-size: 24px;
+    font-size: 20px;
+    /* Smaller font-size for mobile */
     margin-bottom: 15px;
-
 }
 
 img {
     border-radius: 30px;
     width: 100%;
     height: auto;
+    /* Make images responsive */
     border: 2px blue solid;
-    margin: 15px 0px ;
-
+    margin: 15px 0;
+    /* Adjusted margins for smaller screens */
 }
 
 video {
     border: 2px blue solid;
     border-radius: 17px;
     margin-right: 0;
+    /* Adjust for mobile */
     width: 100%;
+    /* Make video responsive */
     height: auto;
 }
 
@@ -123,18 +111,17 @@ span {
     text-decoration-line: none;
     margin: 25px 25px 10px 0;
     color: blue;
-
 }
 
 table {
     margin: 20px;
     text-align: center;
-    width: 95%
+    width: 100%;
+    /* Make table responsive */
 }
 
 table tbody tr td {
     padding: 20px;
-
 }
 
 table tbody {
@@ -143,15 +130,14 @@ table tbody {
 
 table thead {
     background-color: #e49595;
-
 }
 
 .sticky {
-    padding: 5px 95px;
+    text-align: center;
     position: sticky;
     background-color: #cfbfbf;
     z-index: 100;
-    border-radius: 10px;
+    border-radius: 3px;
     top: 37px;
     box-shadow: 0 0 6px 1px #0020454d;
     letter-spacing: 1px;
@@ -160,14 +146,13 @@ table thead {
 
 .footer {
     background-color: #eeeeeee1;
-    padding: 5PX 25px;
+    padding: 5px 25px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     box-shadow: 0 0 6px 1px #0020454d;
-    width:100%;
+    width: 100%;
 }
-
 
 .footer ul li {
     margin: 10px 0;
@@ -176,49 +161,41 @@ table thead {
 }
 
 /* تنسيق الزر */
-/* .dropbtn {
+.dropbtn {
     display: flex;
     background-color: #6ea4cf;
     color: white;
-    padding: 14px 20px; 
     font-size: 16px;
     border: none;
     cursor: pointer;
     border-radius: 48px;
-    top: 0;
-    left: 0;
     font-weight: bold;
-} */
+}
 
-/* label {
+label {
     color: white;
-    display: inline;
+    display: flex;
     cursor: pointer;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     padding: 7px;
     border-radius: 5px;
-
-
 }
 
 label:hover {
     background-color: #7badd6;
-} */
+}
 
 /* التنسيق الأساسي للقائمة المنسدلة */
-/* .dropdown {
-
+.dropdown {
     position: fixed;
     display: block;
     top: 10px;
     left: 100px;
     z-index: 111;
-
-
-} */
+}
 
 /* إخفاء القائمة المنسدلة بشكل افتراضي */
-/* .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #ffffff;
@@ -226,28 +203,25 @@ label:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
-} */
+}
 
 /* تنسيق العناصر داخل القائمة */
-/* .dropdown-content li {
+.dropdown-content li {
     margin: -3px;
-    padding: 34px 0px 0px 0px;
-    list-style: none
-} */
+    padding: 10px;
+    list-style: none;
+}
 
-
-
-/* .dropdown-content li a {
-    margin: -34px 1px 6px 0px;
-    padding: 1px 10px;
+.dropdown-content li a {
+    padding: 10px;
     color: #1515af;
     text-decoration: none;
     display: block;
-    font-size: 18px;
+    font-size: 16px;
+    /* Smaller font-size */
     font-weight: bold;
     border-radius: 5px;
-
-} */
+}
 
 /* تغيير اللون عند التمرير على العناصر */
 .dropdown-content li a:hover {
@@ -263,7 +237,6 @@ label:hover {
 .dropdown:hover .dropbtn {
     background-color: #3985c4;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-
 }
 
 /* وسائل الإعلام للاستجابة (Responsive) */
@@ -271,27 +244,37 @@ label:hover {
     .navbar ul {
         flex-direction: row;
         text-align: center;
-        width:100%;
-        padding :5px 0;
+        width: 100%;
+        /* Adjust width to fit mobile screens */
+        padding: 5px 0;
+        /* Adjust padding */
+    }
+
+    .sticky {
+        padding: 5px 95px
+        position: fixed;
+        left: 24%;
+        top: 70px;
     }
 
     .navbar {
+
+
         width: 810px;
-        padding:7px 10px;
+        padding: 7px 10px;
+        /* Reduced padding */
     }
 
     .main-container {
         flex-direction: column;
-        margin-top:50px;
-        padding:10px;
-
+        margin-top: 50px;
+        padding: 10px;
     }
 
-
-
     .main-box {
-        width:10px;
-        font-size:25px;
+
+        font-size: 25px;
+
     }
 
     .footer {
@@ -310,8 +293,13 @@ label:hover {
     .footer ul li {
         list-style: none;
     }
-    img , video {
-        width:100%;
-        height:auto;
+
+
+
+    img,
+    video {
+        width: 100%;
+        /* Make images and videos responsive */
+        height: auto;
     }
 }
