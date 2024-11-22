@@ -251,10 +251,10 @@ label:hover {
     }
 
     .sticky {
-        width:70%;
+        width:85%;
         padding: 5px 95px;
         position: fixed;
-        left: 70%;
+        left: 65%;
         top: 70px;
     }
 
