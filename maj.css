@@ -4,22 +4,20 @@
     box-sizing: border-box;
     direction: rtl;
 }
-User-agent: *
-Disallow:
 
-
-body {
-    font-family: Arial, sans-serif;
-}
 
 
 .navbar {
-    background-color: #6ea4cf;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #3f88c2;
     color: white;
     padding: 10px;
     z-index: 100;
     top: -1px;
-    position: sticky;
+    position: fixed;
     box-shadow: 0 0 6px 1px #0020454d inset;
 
 }
@@ -29,6 +27,8 @@ body {
     display: flex;
     justify-content: start;
 }
+
+
 
 .navbar ul li {
     margin: 0 15px;
@@ -40,11 +40,20 @@ body {
     font-weight: bold;
     border-radius: 5px;
     padding: 3px 7px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+
 
 }
 
+.navbar ul .dropdown {
+    list-style-type: none;
+    display: flex;
+    justify-content: start;
+}
+
 .navbar ul li a:hover {
-    background-color: #e49595;
+    background-color: #7badd6;
+    padding: 7px;
 
 }
 
@@ -52,64 +61,37 @@ body {
 .main-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px 20px ;
+    padding: 10px 20px;
     margin-top: -10px;
+    position: relative;
 
 }
 
-.sidebar {
-    width: 250px;
-    background-color: #6ea4cf;
-    padding: 20px;
-    flex-shrink: 0;
-    margin-left: 1px;
-    margin-bottom: -9px;
-
-}
-
-.sidebar ul {
-    list-style-type: none;
-    font-size: 18px;
-}
-
-.sidebar ul li {
-    padding: 8px;
-    margin: 10px 0;
-    cursor: pointer;
-    background-color: #cad5b4b0;
-    border-radius: 5px;
-
-}
-
-.sidebar li:hover {
-    background-color: #e49595;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #0a3602;
-}
-
-/* Main box */
 .main-box {
-    line-height: 30px;
-    font-size: larger;
+    line-height: 36px;
+    font-weight: bold;
+    font-family: cursive;
+    font-size: 22px;
+    text-align: justify;
+    /* line-height: 30px;
+    font-size: larger; */
     flex: 1;
     padding: 20px;
     background-color: #efe6e60f;
-    margin-left: 20px;
     min-width: 600px;
 
 }
-.main-box ol li{
+
+.main-box ol li {
     list-style-position: inside;
-    
+    padding-right: 10px;
+    color: blue;
+
 }
+
 .main-box ol {
-    margin-right: 20px;
-    
+    border: 2px solid blue;
+    border-radius: 5px;
 }
 
 .main-box h2 {
@@ -120,7 +102,7 @@ body {
 
 img {
     border-radius: 30px;
-    width: 600px;
+    width: 400px;
     height: 243px;
     border: 2px blue solid;
     margin: 15px 30px 15px 0;
@@ -130,12 +112,13 @@ img {
 video {
     border: 2px blue solid;
     border-radius: 17px;
-    margin-right: 35px;
+    margin-right: 85px;
     width: auto;
     height: 346px
 }
 
 span {
+    padding-top: 58px;
     display: block;
     font-weight: bold;
     text-decoration-line: none;
@@ -164,12 +147,13 @@ table thead {
 }
 
 .sticky {
-    text-align: center;
-    position: sticky;
+    padding: 5px 95px;
+    position: fixed;
     background-color: #cfbfbf;
     z-index: 100;
-    border-radius: 3px;
-    top: 37px;
+    border-radius: 10px;
+    top: 50px;
+    left: 24%;
     box-shadow: 0 0 6px 1px #0020454d;
     letter-spacing: 1px;
 
@@ -177,7 +161,7 @@ table thead {
 
 .footer {
     background-color: #eeeeeee1;
-    padding: 20px;
+    padding: 5PX 25px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -188,8 +172,99 @@ table thead {
 .footer ul li {
     margin: 10px 0;
     color: blue;
+    list-style-position: inside;
 }
 
+/* تنسيق الزر */
+.dropbtn {
+    display: flex;
+    background-color: #6ea4cf;
+    color: white;
+    /* padding: 14px 20px; */
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 48px;
+    top: 0;
+    left: 0;
+    font-weight: bold;
+}
+
+label {
+    color: white;
+    display: inline;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 7px;
+    border-radius: 5px;
+
+
+}
+
+label:hover {
+    background-color: #7badd6;
+}
+
+/* التنسيق الأساسي للقائمة المنسدلة */
+.dropdown {
+
+    position: fixed;
+    display: block;
+    top: 10px;
+    left: 100px;
+    z-index: 111;
+
+
+}
+
+/* إخفاء القائمة المنسدلة بشكل افتراضي */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* تنسيق العناصر داخل القائمة */
+.dropdown-content li {
+    margin: -3px;
+    padding: 34px 0px 0px 0px;
+    list-style: none
+}
+
+
+
+.dropdown-content li a {
+    margin: -34px 1px 6px 0px;
+    padding: 1px 10px;
+    color: #1515af;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+
+}
+
+/* تغيير اللون عند التمرير على العناصر */
+.dropdown-content li a:hover {
+    background-color: rgb(224, 162, 162);
+}
+
+/* إظهار القائمة عند تمرير الماوس على الزر */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* تغيير اللون عند تمرير الماوس على الزر */
+.dropdown:hover .dropbtn {
+    background-color: #3985c4;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+
+}
 
 /* وسائل الإعلام للاستجابة (Responsive) */
 @media (max-width: 768px) {
@@ -197,29 +272,24 @@ table thead {
         flex-direction: row;
         text-align: center;
     }
+
     .navbar {
-        width :810px;
+        width: 810px;
     }
 
     .main-container {
         flex-direction: column;
-        
-    }
-    
 
-    .sidebar {
-        flex-direction: row;
-        width: 768px;
-        margin-left: 20px;
-        
     }
+
+
 
     .main-box {
         margin-left: 0;
     }
 
     .footer {
-        width:810px;
+        width: 810px;
         flex-direction: row;
         align-items: center;
         display: flex;
@@ -230,6 +300,7 @@ table thead {
         width: calc(100% /3);
         text-align: center;
     }
+
     .footer ul li {
         list-style: none;
     }
