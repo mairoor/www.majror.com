@@ -134,7 +134,7 @@ table thead {
 
 .sticky {
     text-align: center;
-    position: sticky;
+    position: fixed;
     background-color: #cfbfbf;
     z-index: 100;
     border-radius: 3px;
@@ -251,9 +251,10 @@ label:hover {
     }
 
     .sticky {
+        width:70%;
         padding: 5px 95px;
         position: fixed;
-        left: 24%;
+        left: 70%;
         top: 70px;
     }
 
