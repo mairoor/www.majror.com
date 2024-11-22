@@ -8,9 +8,8 @@
 
 
 .navbar {
-    height: 50px;
+    height: 70px;
     width: 100%;
-    display: flex;
     align-items: center;
     background-color: #3f88c2;
     color: white;
@@ -31,7 +30,7 @@
 
 
 .navbar ul li {
-    margin: 0 15px;
+    margin: 10px 15px;
 }
 
 .navbar ul li a {
@@ -39,13 +38,13 @@
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    padding: 3px 7px;
+    padding: 10px 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 
 
 }
 
-.navbar ul .dropdown {
+/* .navbar ul .dropdown {
     list-style-type: none;
     display: flex;
     justify-content: start;
@@ -55,14 +54,14 @@
     background-color: #7badd6;
     padding: 7px;
 
-}
+} */
 
 /* Container for the main content */
 .main-container {
     display: flex;
     flex-wrap: wrap;
     padding: 10px 20px;
-    margin-top: -10px;
+    margin-top: 60px;
     position: relative;
 
 }
@@ -78,7 +77,7 @@
     flex: 1;
     padding: 20px;
     background-color: #efe6e60f;
-    min-width: 600px;
+    min-width: 300px;
 
 }
 
@@ -102,23 +101,23 @@
 
 img {
     border-radius: 30px;
-    width: 400px;
-    height: 243px;
+    width: 100%;
+    height: auto;
     border: 2px blue solid;
-    margin: 15px 30px 15px 0;
+    margin: 15px 0px ;
 
 }
 
 video {
     border: 2px blue solid;
     border-radius: 17px;
-    margin-right: 85px;
-    width: auto;
-    height: 346px
+    margin-right: 0;
+    width: 100%;
+    height: auto;
 }
 
 span {
-    padding-top: 58px;
+    padding-top: 35px;
     display: block;
     font-weight: bold;
     text-decoration-line: none;
@@ -130,6 +129,7 @@ span {
 table {
     margin: 20px;
     text-align: center;
+    width: 95%
 }
 
 table tbody tr td {
@@ -148,12 +148,11 @@ table thead {
 
 .sticky {
     padding: 5px 95px;
-    position: fixed;
+    position: sticky;
     background-color: #cfbfbf;
     z-index: 100;
     border-radius: 10px;
-    top: 50px;
-    left: 24%;
+    top: 37px;
     box-shadow: 0 0 6px 1px #0020454d;
     letter-spacing: 1px;
 
@@ -166,6 +165,7 @@ table thead {
     justify-content: space-between;
     flex-wrap: wrap;
     box-shadow: 0 0 6px 1px #0020454d;
+    width:100%;
 }
 
 
@@ -176,11 +176,11 @@ table thead {
 }
 
 /* تنسيق الزر */
-.dropbtn {
+/* .dropbtn {
     display: flex;
     background-color: #6ea4cf;
     color: white;
-    /* padding: 14px 20px; */
+    padding: 14px 20px; 
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -188,9 +188,9 @@ table thead {
     top: 0;
     left: 0;
     font-weight: bold;
-}
+} */
 
-label {
+/* label {
     color: white;
     display: inline;
     cursor: pointer;
@@ -203,10 +203,10 @@ label {
 
 label:hover {
     background-color: #7badd6;
-}
+} */
 
 /* التنسيق الأساسي للقائمة المنسدلة */
-.dropdown {
+/* .dropdown {
 
     position: fixed;
     display: block;
@@ -215,10 +215,10 @@ label:hover {
     z-index: 111;
 
 
-}
+} */
 
 /* إخفاء القائمة المنسدلة بشكل افتراضي */
-.dropdown-content {
+/* .dropdown-content {
     display: none;
     position: absolute;
     background-color: #ffffff;
@@ -226,18 +226,18 @@ label:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
-}
+} */
 
 /* تنسيق العناصر داخل القائمة */
-.dropdown-content li {
+/* .dropdown-content li {
     margin: -3px;
     padding: 34px 0px 0px 0px;
     list-style: none
-}
+} */
 
 
 
-.dropdown-content li a {
+/* .dropdown-content li a {
     margin: -34px 1px 6px 0px;
     padding: 1px 10px;
     color: #1515af;
@@ -247,7 +247,7 @@ label:hover {
     font-weight: bold;
     border-radius: 5px;
 
-}
+} */
 
 /* تغيير اللون عند التمرير على العناصر */
 .dropdown-content li a:hover {
@@ -271,21 +271,27 @@ label:hover {
     .navbar ul {
         flex-direction: row;
         text-align: center;
+        width:100%;
+        padding :5px 0;
     }
 
     .navbar {
         width: 810px;
+        padding:7px 10px;
     }
 
     .main-container {
         flex-direction: column;
+        margin-top:50px;
+        padding:10px;
 
     }
 
 
 
     .main-box {
-        margin-left: 0;
+        width:10px;
+        font-size:25px;
     }
 
     .footer {
@@ -303,5 +309,9 @@ label:hover {
 
     .footer ul li {
         list-style: none;
+    }
+    img , video {
+        width:100%;
+        height:auto;
     }
 }
