@@ -6,9 +6,9 @@
 }
 
 .navbar {
-    height: 70px;
+    height: 100px;
     width: 100%;
-
+    
     align-items: center;
     background-color: #3f88c2;
     color: white;
@@ -26,16 +26,27 @@
 }
 
 .navbar ul li {
-    margin: 10px 15px;
+    margin: 20px 25px;
 }
 
 .navbar ul li a {
-
+    font-size: 20px;
     color: white;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 20px 20px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul .eda a {
+    font-size: 20px;
+    margin-right: 90px ;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 20px 20px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -49,8 +60,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 10px 20px;
-    margin-top: 60px;
-    /* Adjusted for fixed navbar */
+    margin-top: 60px; /* Adjusted for fixed navbar */
     position: relative;
 }
 
@@ -63,8 +73,7 @@
     flex: 1;
     padding: 20px;
     background-color: #efe6e60f;
-    min-width: 300px;
-    /* Reduced min-width for mobile */
+    min-width: 300px; /* Reduced min-width for mobile */
 }
 
 .main-box ol li {
@@ -79,32 +88,28 @@
 }
 
 .main-box h2 {
-    font-size: 20px;
-    /* Smaller font-size for mobile */
+    font-size: 20px; /* Smaller font-size for mobile */
     margin-bottom: 15px;
 }
 
 img {
     border-radius: 30px;
     width: 100%;
-    height: auto;
-    /* Make images responsive */
+    height: auto; /* Make images responsive */
     border: 2px blue solid;
-    margin: 15px 0;
-    /* Adjusted margins for smaller screens */
+    margin: 15px 0;/* Adjusted margins for smaller screens */
 }
 
 video {
     border: 2px blue solid;
     border-radius: 17px;
-    margin-right: 0;
-    /* Adjust for mobile */
-    width: 100%;
-    /* Make video responsive */
+    margin-right: 0; /* Adjust for mobile */
+    width: 100%; /* Make video responsive */
     height: auto;
 }
 
 span {
+    font-size: 35px;
     padding-top: 35px;
     display: block;
     font-weight: bold;
@@ -114,10 +119,9 @@ span {
 }
 
 table {
-    margin: 20px;
+    margin: 20px 10px 20px 10px;
     text-align: center;
-    width: 100%;
-    /* Make table responsive */
+    width: 90%; /* Make table responsive */
 }
 
 table tbody tr td {
@@ -138,7 +142,7 @@ table thead {
     background-color: #cfbfbf;
     z-index: 100;
     border-radius: 3px;
-    top: 37px;
+    top: 77px;
     box-shadow: 0 0 6px 1px #0020454d;
     letter-spacing: 1px;
 
@@ -217,8 +221,7 @@ label:hover {
     color: #1515af;
     text-decoration: none;
     display: block;
-    font-size: 16px;
-    /* Smaller font-size */
+    font-size: 16px; /* Smaller font-size */
     font-weight: bold;
     border-radius: 5px;
 }
@@ -244,42 +247,39 @@ label:hover {
     .navbar ul {
         flex-direction: row;
         text-align: center;
-        width: 100%;
-        /* Adjust width to fit mobile screens */
-        padding: 5px 0;
-        /* Adjust padding */
+        width: 100%; /* Adjust width to fit mobile screens */
+        padding: 10px 0; /* Adjust padding */
     }
-
     .sticky {
         width:85%;
-        padding: 5px 95px;
-        position: fixed;
-        left: 65%;
-        top: 70px;
+        padding: 5px 25px;
+        position :fixed;
+        left:65%;
+        top:100px;
     }
 
     .navbar {
-
-
+        
+        
         width: 820px;
-        padding: 7px 10px;
-        /* Reduced padding */
+        padding: 7px 10px; /* Reduced padding */
     }
 
     .main-container {
         flex-direction: column;
-        margin-top: 50px;
+        margin-top: 20px; 
         padding: 10px;
+        
     }
 
     .main-box {
-
-        font-size: 25px;
-
+        
+        font-size: 25px; 
+        
     }
 
     .footer {
-        width: 810px;
+        width:818px;
         flex-direction: row;
         align-items: center;
         display: flex;
@@ -290,17 +290,16 @@ label:hover {
         width: calc(100% /3);
         text-align: center;
     }
-
     .footer ul li {
         list-style: none;
     }
 
+    
 
-
-    img,
-    video {
-        width: 100%;
-        /* Make images and videos responsive */
+    img, video {
+        width: 100%; /* Make images and videos responsive */
         height: auto;
     }
 }
+
+
