@@ -1,0 +1,130 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    direction: rtl;
+}
+
+.navbar ul li  img {
+    align-items: center;
+    border-radius: 20px;
+    margin: -20px;
+    padding: 0;
+    width: 70px;
+    height: 60px;
+}
+
+.navbar {
+    height: 70px;
+    width: 100%;
+    direction: rtl;
+    align-items: center;
+    background-color: #3f88c2;
+    color: white;
+    padding: 10px;
+    z-index: 100;
+    position: sticky;
+    top: -1px;
+    box-shadow: 0 0 6px 1px #0020454d inset;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: start;
+}
+
+.navbar ul li {
+    margin: 8px 25px;
+}
+
+.navbar ul li a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 20px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul .eda a {
+    font-size: 20px;
+    /* margin-right: 90px; */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 15px 30px;
+    
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.audio-container {
+    border: 3px solid brown;
+    background-color: gray;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+
+.audio-title {
+    font-size: 24px;
+    color: brown;
+    margin-bottom: 5px;
+}
+
+.audio-player {
+    width: 90%;
+    margin: 10px auto;
+}
+
+
+.audio-description {
+    font-size: 16px;
+    color: blue;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .audio-title {
+        font-size: 20px;
+    }
+    
+.audio-container {
+    padding: 25px;
+    text-align: center;
+    width: 650px;
+    margin-right: 25px;
+}
+
+
+    .audio-description {
+       
+        font-size: 18px;
+        text-align: right;
+        padding-right: 10px;
+        
+    }
+
+    .navbar {
+
+
+        width: 600px;
+        padding: 7px 10px;
+    }
+
+    .navbar ul {
+        flex-direction: row;
+        text-align: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+}
