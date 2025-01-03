@@ -118,6 +118,14 @@ span {
     margin: 25px 25px 10px 0;
     color: blue;
 }
+.al {
+    font-size: 35px;
+    padding-top: 35px;
+    display: block;
+    font-weight: bold;
+    margin: 25px 40% 10px 0;
+    color: brwon;
+}
 
 table {
     margin: 20px 10px 20px 10px;
