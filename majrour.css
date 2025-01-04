@@ -40,24 +40,22 @@ body {
 
 .nav-bar ul li a {
     border: 1px solid transparent;
-    font-size: 17px;
     color: white;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    padding: 8px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 5px 8px;
+    box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 46%);
 }
 
 .nav-bar .voice {
     border: 1px solid transparent;
-    font-size: 17px;
     color: white;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
     padding: 8px 12px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 46%);
 }
 
 .nav-bar .voice:hover {
@@ -99,19 +97,27 @@ pre {
 
 
 span {
+    width: fit-content;
     display: block;
-    margin: 8px;
+    margin: 10px 8px 0 0;
     color: brown;
     font-size: 18px;
     font-family: "Amiri";
+
 }
 
 h2 {
-    margin: 8px;
+    text-align: center;
+    width: 95%;
+    border-radius: 5px;
+    padding: 0 15px;
+    background-color: #cfbfbf40;
+    margin: 20px auto 8px;
     font-size: 20px;
-    color: blue;
+    color: teal;
     font-weight: bold;
     font-family: "Amiri";
+    border-bottom: 3px teal solid;
 }
 
 
@@ -142,19 +148,21 @@ ol li {
 }
 
 ol {
+    background-color: #cfbfbf40;
     border: 2px dotted brown;
     border-radius: 5px;
     padding: 10px;
 }
 
 h3 {
+    color: teal;
     text-align: center;
     position: sticky;
     top: 50px;
-    background-color: #cfbfbfd8;
+    background-color: #cfbfbfcf;
     z-index: 100;
     box-shadow: 0 0 6px 1px #0020454d;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
     border-radius: 8px;
     padding: 0 5px;
 
@@ -182,7 +190,7 @@ img,
 video {
     width: 100%;
     height: auto;
-    border: 2px blue solid;
+    border: 2px teal solid;
     border-radius: 17px;
     margin: 15px 0;
 
