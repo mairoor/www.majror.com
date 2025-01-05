@@ -1,130 +1,130 @@
-body {
-    font-family: 'Times New Roman', Times, serif;
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
     direction: rtl;
+    font-family: "Amiri";
+
 }
 
-.navbar ul li  img {
-    align-items: center;
-    border-radius: 20px;
-    margin: -20px;
-    padding: 0;
-    width: 70px;
-    height: 60px;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(audiobackround.jpg);
+    background-position: left;
+    background-attachment: fixed;
+    background-position-y: 50px;
+
 }
 
-.navbar {
-    height: 70px;
-    width: 100%;
-    direction: rtl;
-    align-items: center;
-    background-color: #3f88c2;
-    color: white;
-    padding: 10px;
-    z-index: 100;
+.nav-bar {
+    border: 1px solid lightseagreen;
     position: sticky;
-    top: -1px;
+    top: 0;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #344932;
+    color: white;
+    z-index: 100;
     box-shadow: 0 0 6px 1px #0020454d inset;
 }
 
-.navbar ul {
+.nav-bar ul {
     list-style-type: none;
     display: flex;
-    justify-content: start;
 }
 
-.navbar ul li {
-    margin: 8px 25px;
+.nav-bar ul li {
+    margin: 0px 5px;
+    padding: 5px auto;
+
+
 }
 
-.navbar ul li a {
-    font-size: 20px;
-    color: white;
+.nav-bar ul li a {
+
+    font-size: 15px;
+    border: 0.5px solid lightseagreen;
+    color: burlywood;
     text-decoration: none;
-    font-weight: bold;
     border-radius: 5px;
-    padding: 5px 20px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 0 8px;
+    text-align: right;
+    margin: 10px 0 0;
+    background-color: #344932b0;
 }
 
-.navbar ul .eda a {
-    font-size: 20px;
-    /* margin-right: 90px; */
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 15px 30px;
-    
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+h3 {
+    font-size: 14px;
+    margin: 10px 0px 0px;
+    color: navajowhite;
+    border: 2px solid teal;
+    padding: 0 5px;
+    border-radius: 18px;
+    background-color: #252525;
 }
 
-.audio-container {
-    border: 3px solid brown;
-    background-color: gray;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+p {
+
     width: 100%;
-    max-width: 500px;
+    padding: 8px;
+    text-align: right;
+    font-size: 14px;
+    color: white;
+    background-color: #344932b0;
+    border-bottom: 2px teal solid;
+    border-radius: 6px;
 }
 
 
-.audio-title {
-    font-size: 24px;
-    color: brown;
-    margin-bottom: 5px;
+
+.box {
+    margin: 20px 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
 
-.audio-player {
-    width: 90%;
-    margin: 10px auto;
-}
-
-
-.audio-description {
-    font-size: 16px;
-    color: blue;
-    line-height: 1.6;
-}
-
-@media (max-width: 600px) {
-    .audio-title {
-        font-size: 20px;
-    }
-    
-.audio-container {
-    padding: 25px;
+.box div {
+    border-top: 2px solid tomato;
+    display: flex;
+    margin: 0 auto 16px;
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    width: 650px;
-    margin-right: 25px;
+    background-color: #1c544038;
+    box-shadow: 0px 1px 7px -5px rgb(0 0 0 / 46%);
+    border-radius: 10px;
 }
 
 
-    .audio-description {
-       
-        font-size: 18px;
-        text-align: right;
-        padding-right: 10px;
-        
-    }
 
-    .navbar {
+audio {
+    margin: 10px auto;
+    width: 88%;
+    border: 3px solid teal;
+    border-bottom: 4px tomato solid;
+    border-right: 2px tomato solid;
+    border-left: 2px tomato solid;
+    border-radius: 35px;
+    height: 35px;
+}
 
 
-        width: 600px;
-        padding: 7px 10px;
-    }
 
-    .navbar ul {
-        flex-direction: row;
-        text-align: center;
-        width: 100%;
-        padding: 5px 0;
-    }
+footer {
+    border-top: 1px solid teal;
+    text-align: center;
+    padding: 6px;
+    font-size: 12px;
+    background-color: rgba(169, 169, 169, 0.767);
+    box-shadow: 0 0 6px 1px #0020454d inset;
 }
