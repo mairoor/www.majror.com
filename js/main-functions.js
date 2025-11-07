@@ -247,7 +247,7 @@ function initCommentsSystem() {
     loadComments();
     
     // حدث إضافة تعليق
-    submitBtn.addEventListener('click', function() {
+    submitBtn.addEventListener('click', async function() {
         const nameInput = document.getElementById('commentName');
         const textInput = document.getElementById('commentText');
         
@@ -261,33 +261,46 @@ function initCommentsSystem() {
             return;
         }
         
-        const comment = {
-            id: Date.now(),
-            name: name,
-            text: text,
-            date: new Date().toLocaleString('ar-EG', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })
-        };
+        // تعطيل الزر مؤقتاً
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'جاري الإرسال...';
         
-        // حفظ التعليق
-        let comments = JSON.parse(localStorage.getItem('siteComments') || '[]');
-        comments.unshift(comment);
-        localStorage.setItem('siteComments', JSON.stringify(comments));
-        
-        // مسح النموذج
-        nameInput.value = '';
-        textInput.value = '';
-        
-        // إعادة تحميل التعليقات
-        loadComments();
-        
-        console.log('💬 تم إضافة تعليق جديد من:', name);
-        alert('✅ تم إضافة تعليقك بنجاح!');
+        try {
+            // إرسال التعليق إلى الخادم
+            const response = await fetch('save-comment.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    text: text
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // مسح النموذج
+                nameInput.value = '';
+                textInput.value = '';
+                
+                // إعادة تحميل الصفحة لعرض التعليق الجديد
+                alert('✅ تم إضافة تعليقك بنجاح!');
+                console.log('💬 تم إضافة تعليق جديد من:', name);
+                location.reload();
+            } else {
+                alert('❌ حدث خطأ: ' + result.message);
+                console.error('❌ خطأ في حفظ التعليق:', result.message);
+            }
+        } catch (error) {
+            console.error('❌ خطأ في الاتصال:', error);
+            alert('❌ حدث خطأ في الاتصال بالخادم. يرجى المحاولة مرة أخرى.');
+        } finally {
+            // إعادة تفعيل الزر
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'تعليق';
+        }
     });
     
     console.log('✅ نظام التعليقات جاهز');
@@ -297,22 +310,24 @@ function loadComments() {
     const commentsList = document.getElementById('commentsList');
     if (!commentsList) return;
     
-    const comments = JSON.parse(localStorage.getItem('siteComments') || '[]');
+    // التعليقات موجودة بالفعل في HTML المحقون من PHP
+    // نحتاج فقط للتحقق إذا كانت فارغة لعرض رسالة
+    const commentsStart = commentsList.querySelector('[data-comments-start]');
+    const hasComments = commentsList.querySelectorAll('.comment-item').length > 0;
     
-    if (comments.length === 0) {
-        commentsList.innerHTML = '<p class="no-comments" style="text-align: center; color: #999; padding: 2rem;">لا توجد تعليقات بعد. كن أول من يعلق!</p>';
-        return;
+    if (!hasComments) {
+        // إضافة رسالة فقط إذا لم تكن موجودة
+        const noCommentsMsg = commentsList.querySelector('.no-comments');
+        if (!noCommentsMsg) {
+            const marker = commentsList.innerHTML.indexOf('<!-- COMMENTS_END -->');
+            if (marker !== -1) {
+                const msgHtml = '<p class="no-comments" style="text-align: center; color: #999; padding: 2rem;">لا توجد تعليقات بعد. كن أول من يعلق!</p>';
+                commentsList.innerHTML = commentsList.innerHTML.replace('<!-- COMMENTS_START -->', '<!-- COMMENTS_START -->' + msgHtml);
+            }
+        }
     }
     
-    commentsList.innerHTML = comments.map(comment => `
-        <div class="comment-item" style="background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-            <div class="comment-header" style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
-                <span class="comment-author" style="font-weight: 600; color: #2c5f7d;">${comment.name}</span>
-                <span class="comment-date" style="font-size: 0.9rem; color: #999;">${comment.date}</span>
-            </div>
-            <div class="comment-text" style="line-height: 1.8; color: #333;">${comment.text}</div>
-        </div>
-    `).join('');
+    console.log(`💬 عدد التعليقات المعروضة: ${hasComments ? commentsList.querySelectorAll('.comment-item').length : 0}`);
 }
 
 // ==============================================

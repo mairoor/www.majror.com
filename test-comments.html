@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار نظام التعليقات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .status {
+            background: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-right: 4px solid #667eea;
+        }
+        
+        .status h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .success {
+            color: #22c55e;
+        }
+        
+        .error {
+            color: #ef4444;
+        }
+        
+        .warning {
+            color: #f59e0b;
+        }
+        
+        .instructions {
+            background: #fffbeb;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-right: 4px solid #f59e0b;
+        }
+        
+        .instructions h3 {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ol {
+            margin-right: 1.5rem;
+            line-height: 2;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #22c55e;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-success {
+            background: #22c55e;
+        }
+        
+        .btn-success:hover {
+            background: #16a34a;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f3f4f6;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 اختبار نظام التعليقات</h1>
+        
+        <div class="status">
+            <h2>📋 حالة النظام</h2>
+            <div class="check-item">
+                <span class="icon" id="phpStatus">⏳</span>
+                <span id="phpText">جاري التحقق من خادم PHP...</span>
+            </div>
+            <div class="check-item">
+                <span class="icon" id="fileStatus">⏳</span>
+                <span id="fileText">جاري التحقق من الملفات...</span>
+            </div>
+            <div class="check-item">
+                <span class="icon" id="permStatus">⏳</span>
+                <span id="permText">جاري التحقق من الصلاحيات...</span>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>📚 كيفية التشغيل</h3>
+            <ol>
+                <li><strong>تشغيل خادم PHP المدمج:</strong>
+                    <div class="code-block">php -S localhost:8000</div>
+                </li>
+                <li><strong>فتح الموقع في المتصفح:</strong>
+                    <div class="code-block">http://localhost:8000</div>
+                </li>
+                <li><strong>اختبار التعليقات:</strong> اذهب لنهاية الصفحة واكتب تعليقاً</li>
+                <li><strong>التحقق من النتيجة:</strong> سيُحقن التعليق في ملف index.html</li>
+            </ol>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="index.html" class="btn btn-success">🏠 الذهاب للموقع الرئيسي</a>
+            <a href="COMMENTS_SYSTEM_README.md" class="btn" target="_blank">📖 قراءة التعليمات الكاملة</a>
+        </div>
+        
+        <div class="footer">
+            <p>💻 تم تطوير نظام حقن التعليقات في HTML</p>
+            <p>🔧 PHP + JavaScript + HTML</p>
+        </div>
+    </div>
+    
+    <script>
+        // فحص خادم PHP
+        async function checkPHP() {
+            const phpStatus = document.getElementById('phpStatus');
+            const phpText = document.getElementById('phpText');
+            
+            try {
+                const response = await fetch('save-comment.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ test: true })
+                });
+                
+                if (response.ok) {
+                    phpStatus.textContent = '✅';
+                    phpStatus.className = 'icon success';
+                    phpText.textContent = 'خادم PHP يعمل بشكل صحيح';
+                } else {
+                    phpStatus.textContent = '⚠️';
+                    phpStatus.className = 'icon warning';
+                    phpText.textContent = 'خادم PHP يستجيب ولكن هناك مشكلة في الطلب';
+                }
+            } catch (error) {
+                phpStatus.textContent = '❌';
+                phpStatus.className = 'icon error';
+                phpText.textContent = 'خادم PHP غير متاح - يرجى تشغيل: php -S localhost:8000';
+            }
+        }
+        
+        // فحص الملفات
+        async function checkFiles() {
+            const fileStatus = document.getElementById('fileStatus');
+            const fileText = document.getElementById('fileText');
+            
+            const files = ['index.html', 'save-comment.php'];
+            let allExist = true;
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file, { method: 'HEAD' });
+                    if (!response.ok) {
+                        allExist = false;
+                        break;
+                    }
+                } catch {
+                    allExist = false;
+                    break;
+                }
+            }
+            
+            if (allExist) {
+                fileStatus.textContent = '✅';
+                fileStatus.className = 'icon success';
+                fileText.textContent = 'جميع الملفات المطلوبة موجودة';
+            } else {
+                fileStatus.textContent = '❌';
+                fileStatus.className = 'icon error';
+                fileText.textContent = 'بعض الملفات مفقودة';
+            }
+        }
+        
+        // فحص الصلاحيات (محاكاة)
+        function checkPermissions() {
+            const permStatus = document.getElementById('permStatus');
+            const permText = document.getElementById('permText');
+            
+            // نحتاج لاختبار فعلي بإرسال طلب
+            setTimeout(() => {
+                permStatus.textContent = '⚠️';
+                permStatus.className = 'icon warning';
+                permText.textContent = 'تحقق من صلاحيات الكتابة على index.html يدوياً';
+            }, 1000);
+        }
+        
+        // تشغيل الفحوصات
+        window.addEventListener('DOMContentLoaded', () => {
+            checkPHP();
+            checkFiles();
+            checkPermissions();
+        });
+    </script>
+</body>
+</html>

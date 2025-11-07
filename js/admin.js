@@ -134,9 +134,9 @@ function removeImage() {
 }
 
 // ==============================================
-// 5. حفظ سيرة ذاتية جديدة
+// 5. حفظ سيرة ذاتية جديدة (مع حقن في HTML)
 // ==============================================
-function saveBiography(event) {
+async function saveBiography(event) {
     event.preventDefault();
     console.log('💾 محاولة حفظ سيرة ذاتية جديدة...');
     
@@ -153,46 +153,70 @@ function saveBiography(event) {
         return;
     }
     
-    // قراءة السير الذاتية الموجودة
-    const biographies = JSON.parse(localStorage.getItem('biographyContent') || '[]');
-    
-    // إنشاء سيرة ذاتية جديدة
-    const newBiography = {
-        id: Date.now(), // استخدام timestamp كمعرف فريد
-        name: name,
-        category: category,
-        image: uploadedImage || null, // استخدام الصورة المرفوعة أو null
-        content: content,
-        date: new Date().toLocaleString('ar-EG', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        })
-    };
-    
-    // إضافة السيرة الذاتية الجديدة
-    biographies.push(newBiography);
-    
-    // حفظ في localStorage
-    localStorage.setItem('biographyContent', JSON.stringify(biographies));
-    
-    console.log('✅ تم حفظ السيرة الذاتية بنجاح:', newBiography.name);
-    console.log('📊 إجمالي السير الذاتية:', biographies.length);
-    if (uploadedImage) {
-        console.log('🖼️ تم حفظ الصورة مع السيرة الذاتية');
+    // تعطيل زر الحفظ مؤقتاً
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحفظ...';
     }
     
-    // إظهار رسالة النجاح
-    showSuccessMessage();
-    
-    // إعادة تحميل القائمة
-    loadBiographies();
-    
-    // مسح النموذج
-    form.reset();
-    removeImage(); // إزالة الصورة من المعاينة
+    try {
+        // إرسال البيانات إلى PHP لحقنها في HTML
+        const response = await fetch('save-biography.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                category: category,
+                content: content,
+                image: uploadedImage || null
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            console.log('✅ تم حفظ السيرة الذاتية بنجاح:', result.biography.name);
+            console.log('📂 الفئة:', result.biography.categoryLabel);
+            
+            // حفظ نسخة في localStorage أيضاً للعرض في لوحة التحكم
+            const biographies = JSON.parse(localStorage.getItem('biographyContent') || '[]');
+            biographies.push({
+                id: Date.now(),
+                name: name,
+                category: category,
+                image: uploadedImage || null,
+                content: content,
+                date: result.biography.date
+            });
+            localStorage.setItem('biographyContent', JSON.stringify(biographies));
+            
+            // إظهار رسالة النجاح
+            showSuccessMessage('تم الحفظ والحقن في HTML بنجاح!');
+            
+            // إعادة تحميل القائمة
+            loadBiographies();
+            
+            // مسح النموذج
+            form.reset();
+            removeImage();
+            
+        } else {
+            throw new Error(result.message || 'حدث خطأ غير معروف');
+        }
+        
+    } catch (error) {
+        console.error('❌ خطأ في حفظ السيرة الذاتية:', error);
+        alert('❌ حدث خطأ: ' + error.message + '\n\nتأكد من تشغيل خادم PHP.');
+    } finally {
+        // إعادة تفعيل الزر
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-save"></i> حفظ السيرة الذاتية';
+        }
+    }
 }
 
 // ==============================================
