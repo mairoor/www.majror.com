@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 صوتيات المجرور | مشغل الصوتيات</title>
+    <meta name="description"
+        content="استمع إلى مقاطع صوتية تاريخية عن المجرور من مجموعة متنوعة من المتحدثين في مشغل صوتيات عصري.">
+    <meta name="keywords" content="مدينة المجرور, تاريخ المجرور, صوتيات المجرور, السودان, مقاطع صوتية">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="audio.css">
+</head>
+
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🎵</span>
+                <h1>صوتيات المجرور</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">🏠 الرئيسية</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-container">
+        <!-- قسم المشغل الرئيسي -->
+        <div class="player-section">
+            <div class="now-playing">
+                <div class="album-art">
+                    <div class="vinyl-disc">
+                        <div class="vinyl-center"></div>
+                    </div>
+                    <div class="sound-waves">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="track-info">
+                    <h2 id="currentTitle">اختر مقطع صوتي</h2>
+                    <p id="currentDescription">انقر على أي مقطع من القائمة للبدء</p>
+                </div>
+            </div>
+
+            <!-- عناصر التحكم -->
+            <div class="player-controls">
+                <div class="progress-container">
+                    <span class="time" id="currentTime">0:00</span>
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-handle" id="progressHandle"></div>
+                    </div>
+                    <span class="time" id="duration">0:00</span>
+                </div>
+
+                <div class="control-buttons">
+                    <button class="control-btn" id="prevBtn" title="السابق">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn play-btn" id="playBtn" title="تشغيل">
+                        <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn" id="nextBtn" title="التالي">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 18h2V6h-2zm-11-7l8.5-6v12z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="volume-control">
+                    <button class="volume-btn" id="volumeBtn">
+                        <svg id="volumeIcon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                        </svg>
+                    </button>
+                    <div class="volume-slider">
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قائمة التشغيل -->
+        <div class="playlist-section">
+            <div class="playlist-header">
+                <h3>📻 قائمة التشغيل</h3>
+                <span class="playlist-count" id="playlistCount">5 مقاطع</span>
+            </div>
+            <div class="playlist" id="playlist">
+                <!-- سيتم إضافة المقاطع هنا عبر JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <p>🎵 جميع الحقوق محفوظة © 2024 | موقع المجرور</p>
+    </footer>
+
+    <!-- عنصر الصوت المخفي -->
+    <audio id="audioPlayer"></audio>
+
+    <script src="audio.js"></script>
+</body>
+
+</html>

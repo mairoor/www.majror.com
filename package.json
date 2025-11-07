@@ -1,0 +1,19 @@
+{
+  "name": "majror-website",
+  "version": "1.0.0",
+  "description": "موقع مدينة المجرور البحير - السودان",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "majror",
+    "sudan",
+    "website"
+  ],
+  "author": "إبراهيم النعيم بليله",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
+

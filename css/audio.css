@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: "Amiri";
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(audiobackround.jpg);
+    background-position: left;
+    background-attachment: fixed;
+    background-position-y: 50px;
+
+}
+
+.nav-bar {
+    border-bottom: 2px solid teal;
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #344932;
+    color: white;
+    z-index: 100;
+    box-shadow: 0 0 6px 1px #0020454d inset;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-bar ul li {
+    margin: 0px 5px;
+
+}
+
+.nav-bar ul li a {
+
+    font-size: 15px;
+    border: 0.5px solid #20b2aad9;
+    color: burlywood;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 0 8px;
+    text-align: right;
+    margin: 10px 0 0;
+    background-color: #344932b0;
+}
+
+h3 {
+    font-size: 14px;
+    margin: 10px 0px 0px;
+    color: navajowhite;
+    border: 2px solid teal;
+    padding: 0 5px;
+    border-radius: 18px;
+    background-color: #252525;
+}
+
+p {
+
+    width: 100%;
+    padding: 8px;
+    text-align: right;
+    color: white;
+    background-color: #34493247;
+    border-bottom: 2px teal solid;
+    border-radius: 6px;
+}
+
+
+
+.box {
+    margin: 20px 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.box div {
+    border-top: 2px solid tomato;
+    display: flex;
+    margin: 0 auto 16px;
+    width: 97%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #1c544026;
+    box-shadow: 0px 1px 7px -5px rgb(0 0 0 / 46%);
+    border-radius: 10px;
+}
+
+
+
+audio {
+    margin: 10px auto;
+    width: 95%;
+    border: 3px solid teal;
+    border-bottom: 4px tomato solid;
+    border-right: 2px tomato solid;
+    border-left: 2px tomato solid;
+    border-radius: 35px;
+    height: 35px;
+}
+
+
+
+footer {
+    border-top: 1px solid teal;
+    text-align: center;
+    padding: 6px;
+    font-size: 12px;
+    background-color: rgb(169 169 169 / 60%);
+    box-shadow: 0 0 6px 1px #0020454d inset;
+}

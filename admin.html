@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إدارة السير الذاتية | موقع المجرور</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-logo">
+            <h1><i class="fas fa-user-shield"></i> لوحة التحكم - إدارة السير الذاتية</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <div class="admin-container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2><i class="fas fa-plus-circle"></i> إضافة سيرة ذاتية جديدة</h2>
+            
+            <form id="biographyForm">
+                <div class="form-group">
+                    <label for="name">
+                        <i class="fas fa-user"></i> الاسم الكامل *
+                    </label>
+                    <input type="text" id="name" name="name" required placeholder="مثال: عثمان محمد صالح">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">
+                        <i class="fas fa-tags"></i> التصنيف *
+                    </label>
+                    <select id="category" name="category" required>
+                        <option value="">-- اختر التصنيف --</option>
+                        <option value="education">شخصيات ساهمت في التعليم</option>
+                        <option value="religious">الشخصيات الدينية</option>
+                        <option value="leadership">الشخصيات القيادية</option>
+                        <option value="cultural">الشخصيات الثقافية</option>
+                        <option value="sports">الشخصيات الرياضية</option>
+                        <option value="medical">الشخصيات الطبية</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="imageFile">
+                        <i class="fas fa-image"></i> رفع الصورة من الجهاز (اختياري)
+                    </label>
+                    <input type="file" id="imageFile" name="imageFile" accept="image/*" style="padding: 0.5rem;">
+                    <small style="color: #666; font-size: 0.9rem; margin-top: 0.3rem; display: block;">
+                        يمكنك رفع صورة من جهازك مباشرة (JPG, PNG, GIF)
+                    </small>
+                    <div id="imagePreview" style="margin-top: 1rem; display: none;">
+                        <img id="previewImg" src="" alt="معاينة الصورة" style="max-width: 100%; max-height: 200px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <button type="button" onclick="removeImage()" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                            <i class="fas fa-times"></i> إزالة الصورة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">
+                        <i class="fas fa-file-alt"></i> السيرة الذاتية الكاملة *
+                    </label>
+                    <textarea id="content" name="content" rows="15" required placeholder="أدخل السيرة الذاتية الكاملة هنا...
+
+مثال:
+    السيرة الذاتية
+
+. الميلاد : قرية الطمبة ١٩٦٨ م
+
+المراحل التعليمية :-
+
+. الطمبة الابتدائية ١٩٧٥ م
+. ام دبيبة المتوسطة ١٩٨١ م
+. معهد تدريب المعلمين الدلنج ١٩٨٤ م - ١٩٨٩ م
+
+        المراحل العملية :-
+. مدرسة حمرة الشيخ ١٩٨٩ م - ١٩٩٢ م
+. مدرسة عديد دار سعيد ١٩٩٢م - ١٩٩٤ م
+. مدرسة رهد النمر ١٩٩٥ م - ١٩٩٧م
+. مدرسة أم بطيطيخة ١٩٩٨ م - ١٩٩٩م
+. مدرسة المجرور ٢٠٠٠م - ٢٠٢١م
+. مكتب التعليم بإدارية المجرور ٢٠٢١"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> حفظ السيرة الذاتية
+                </button>
+            </form>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <h2><i class="fas fa-list"></i> السير الذاتية المحفوظة</h2>
+            
+            <!-- Update Button -->
+            <div style="margin-bottom: 1.5rem; padding: 1rem; background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 8px; border: 2px solid #2196f3;">
+                <h3 style="color: #1565c0; margin: 0 0 0.5rem 0; font-size: 1.1rem;">
+                    <i class="fas fa-sync-alt"></i> تحديث تلقائي على GitHub
+                </h3>
+                <p style="color: #555; font-size: 0.9rem; margin: 0 0 1rem 0;">
+                    قم بتحديث ملف index.html تلقائياً على GitHub مع جميع السير الذاتية مدمجة مباشرة في الملف
+                </p>
+                <button onclick="updateHTMLOnGitHub()" class="export-btn" style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, #2196f3, #42a5f5); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-bottom: 0.5rem;">
+                    <i class="fas fa-sync-alt"></i> تحديث تلقائي على GitHub
+                </button>
+                <button onclick="exportUpdatedHTML()" class="export-btn" style="width: 100%; padding: 0.6rem; background: #e8f5e9; color: #2e7d32; border: 2px solid #4caf50; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="fas fa-download"></i> تصدير يدوي (احتياطي)
+                </button>
+            </div>
+            
+            <div id="biographiesList" class="content-list">
+                <!-- السير الذاتية ستظهر هنا -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle"></i> تم الحفظ بنجاح!
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
+
