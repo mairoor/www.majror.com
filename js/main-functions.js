@@ -15,19 +15,71 @@ const CATEGORY_LABELS = {
 };
 
 // ==============================================
-// 1. عداد الزوار
+// 1. عداد الزوار (يتم حفظه على GitHub)
 // ==============================================
-function initVisitorCounter() {
+async function initVisitorCounter() {
     console.log('👥 تهيئة عداد الزوار...');
     
-    let visitorCount = localStorage.getItem('visitorCount') || 0;
-    visitorCount = parseInt(visitorCount) + 1;
-    localStorage.setItem('visitorCount', visitorCount);
-    
     const counterElement = document.getElementById('visitorCount');
-    if (counterElement) {
-        counterElement.textContent = visitorCount;
-        console.log(`✅ عدد الزوار: ${visitorCount}`);
+    if (!counterElement) {
+        console.warn('⚠️ عنصر عداد الزوار غير موجود');
+        return;
+    }
+    
+    try {
+        // التحقق من أن الزائر لم يزور الموقع في هذه الجلسة
+        const sessionKey = 'visitorCounted_' + new Date().toDateString();
+        const hasCounted = sessionStorage.getItem(sessionKey);
+        
+        // قراءة العدد الحالي من GitHub
+        const response = await fetch('/.netlify/functions/visitor-counter', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            let currentCount = result.count || 0;
+            
+            // إذا لم يتم العد في هذه الجلسة، قم بزيادة العدد
+            if (!hasCounted) {
+                console.log('➕ زيادة عدد الزوار...');
+                
+                const incrementResponse = await fetch('/.netlify/functions/visitor-counter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const incrementResult = await incrementResponse.json();
+                
+                if (incrementResult.success) {
+                    currentCount = incrementResult.count;
+                    sessionStorage.setItem(sessionKey, 'true');
+                    console.log(`✅ تم تحديث عدد الزوار إلى: ${currentCount}`);
+                } else {
+                    console.warn('⚠️ لم يتم تحديث العدد، استخدام العدد الحالي');
+                }
+            }
+            
+            // عرض العدد في الموقع
+            counterElement.textContent = currentCount.toLocaleString('ar-EG');
+            console.log(`📊 عدد الزوار الحالي: ${currentCount}`);
+        } else {
+            throw new Error(result.error || 'حدث خطأ في قراءة العدد');
+        }
+        
+    } catch (error) {
+        console.error('❌ خطأ في عداد الزوار:', error);
+        // في حالة الخطأ، استخدم localStorage كبديل
+        let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0') + 1;
+        localStorage.setItem('visitorCount', visitorCount);
+        counterElement.textContent = visitorCount.toLocaleString('ar-EG');
+        console.log(`⚠️ استخدام العدد المحلي: ${visitorCount}`);
     }
 }
 
